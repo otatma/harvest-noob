@@ -1,27 +1,35 @@
 #Persistent
 #SingleInstance force
+
 ;Defines the center of the screen.
 ;Auto detecting this from resolution would be hellofa cool.
 ;But for now I'll just edit it using autoit3.
 centerx=478
 centery=406
 
-;Link x offset..  16.  
-;Link y offset..  15.
-;And I had laser offsets as 40/20?  Wtf?
+;Link size works ok at 18x18.  ish.
+;Laser size..
+;Missile size..
+;Solar size...
+;Harvester?
+
 
 ;Offsets used for the move function...
 ;Developed from the energy link range.
-;If you want to expand the grid, do it here.
+;If you want to change the grid size, do it here.
+;X is the hori distance from cell center to cell edge.
+;2*X is the hori distance from cell center to cell center.
+;Y is the vert distance from cell center to cell center.
+;gutter is the number of pixels away from the cell edge that
+; energy links should be placed. (~9?)
 movex=128
-movey=209
+movey=210
+gutter=8
 
-;Offsets used for the laser functions...
-;Attempting to isolate the 'size' of a laser.
-;This allows me to place them close together,
-;but reliably!
-lasx=
-lasy=
+;Approximate radius of laser building.
+;Hypotenuses are a bitch when you don't know trig.
+;Still working out how to use this info. 
+las=20
 
 Numpad1::Move(-movex,movey)
 Numpad4::Move(-2*movex,0)
@@ -29,13 +37,11 @@ Numpad7::Move(-movex,-movey)
 Numpad3::Move(movex,movey)
 Numpad6::Move(2*movex,0)
 Numpad9::Move(movex,-movey)
-Numpad8::InstallDSpiral()
-Numpad5::ClaimE()
-Numpad2::InstallSD()
+Numpad8::InstallD(centerx,centery,lasx,lasy)
+Numpad5::ClaimE(centerx,centery,movex,movey,gutter)
+Numpad2::InstallSD(centerx,centery)
 
-;need a way to recenter...
-;use x and y to move consistently
-
+;Move the camera while keeping a cell centered.
 Move(x,y)
 {
 WinWait, Harvest - (c) Oxeye Game Studio, 
@@ -48,89 +54,44 @@ SendInput {SPACE up}
 Sleep, 10
 }
 
-;Lay down a grid of 19 lasers linewise.
-;Should be edited to use lasx/lasy.
-InstallD()
-{
-Center()
-Send, d
-MouseClick, left,  393,  406
-Sleep, 10
-MouseClick, left,  433,  406
-Sleep, 10
-MouseClick, left,  473,  406
-Sleep, 10
-MouseClick, left,  513,  406
-Sleep, 10
-MouseClick, left,  553,  406
-Sleep, 10
-
-MouseClick, left,  413,  374
-Sleep, 10
-MouseClick, left,  453,  374
-Sleep, 10
-MouseClick, left,  493,  374
-Sleep, 10
-MouseClick, left,  533,  374
-Sleep, 10
-
-MouseClick, left,  413,  438
-Sleep, 10
-MouseClick, left,  453,  438
-Sleep, 10
-MouseClick, left,  493,  438
-Sleep, 10
-MouseClick, left,  533,  438
-Sleep, 10
-
-MouseClick, left,  433,  342
-Sleep, 10
-MouseClick, left,  473,  342
-Sleep, 10
-MouseClick, left,  513,  342
-Sleep, 10
-
-MouseClick, left,  433,  470
-Sleep, 10
-MouseClick, left,  473,  470
-Sleep, 10
-MouseClick, left,  513,  470
-Sleep, 10
-Center()
-}
-
+/* in progress.
 ;Lay down a grid of lasers in a spiral.
-InstallDSpiral()
+;xy is the center; ab is the laser size.
+InstallD(x,y,a,b)
 {
 Center()
 Send, d
-;stuff goes here
+MouseClick, left, x, y
+MouseClick, left, x-a, y+b
+MouseClick, left, x+a, y+b
+MouseClick, left, x, y
 Center()
 }
+*/
 
 ;Lay down a hex cell of 6 links.
-ClaimE()
+;Allow a bit of room...
+ClaimE(cx,cy,mx,my,g)
 {
 Center()
 Send, e
-MouseClick, left,  478,  267
+MouseClick, left,  (cx-mx)+(.7*g), (cy+(my/3))-(.7*g)
 Sleep, 10
-MouseClick, left,  478,  536
+MouseClick, left,  cx, (cy+2*(my/3))-(.7*g)
+Sleep, 10
+MouseClick, left,  (cx+mx)-(.7*g), (cy+(my/3))-(.7*g)
+Sleep, 10
+MouseClick, left,  (cx+mx)-(.7*g), (cy-(my/3))+(.7*g)
+Sleep, 10
+MouseClick, left,  cx, (cy-2*(my/3))+(.7*g)
+Sleep, 10
+MouseClick, left,  (cx-mx)+(.7*g), (cy-(my/3))+(.7*g)
 Sleep, 10
 
-MouseClick, left,  598,  334
-Sleep, 10
-MouseClick, left,  598,  469
-Sleep, 10
-
-MouseClick, left,  358,  334
-Sleep, 10
-MouseClick, left,  358,  469
-Sleep, 10
 Center()
 }
 
-InstallSD()
+InstallSD(x,y)
 {
 Center()
 Send, s
