@@ -1,3 +1,16 @@
+1702 5 JULY
+note to self: github has about a five minute lag.  
+
+For a regular hexagon with sides of length n, what is the distance between the center of the hexagon and the midpoint of one side?  
+
+I should be able to find this distance by constructing a triangle:
+hypotenuse is length n
+short leg is length .5n
+solve for long leg.
+
+pythagorean theorem: a^2+b^2=c^2
+a is known, c is known, solving for b will help me understand how to precisely place lasers in a dense hex rather than a flat orthogonal grid.  Are building footprints round?  Further testing needed.
+
 5 JULY
 This is an ahk script or maybe series of ahk scripts for the purpose of partially playing Harvest: Massive Encounter by Oxeye Studio.
 
