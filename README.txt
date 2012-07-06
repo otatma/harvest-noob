@@ -1,3 +1,18 @@
+2201 5 JULY
+All that trigonometry was rubbish, I got it figured out.  Spirals are much
+stabler for construction, too.  
+
+Numpad 2 builds 19 solar panels in the centered cell.
+Numpad / builds 19 missile turrets in the in the centered cell.
+Numpad * upgrades a missile cell into a cruise missile cell.
+Numpad . upgrades a missile cell into a scatterbomb cell.  (Scatterbombs are still kind of crap, though.)
+
+I still want to do something with the edges-upgrade (was it installsd?) but it's kind of late and I'm having trouble visualizing how to get around the variable sizes of the stuff.  What might fit in nicely with the missiles would be edged out by the solars.
+
+Switched to a higher resolution.
+
+This is actually usable for playing the game now, I made it a few layers into Wave mode with no trouble whatsoever.  
+
 1702 5 JULY
 note to self: github has about a five minute lag.  
 

@@ -9,15 +9,13 @@ centery=548
 ;478 406
 ;808 548
 
-;Link size seems to be ~16 to 18.
-;Laser size.. 478 406 - 436 406 . . . x 42?    457 370 . . .  y 36?
-;Missile size..
-;Solar size... 478 406 - 428 406 . . . x 50?   453 361 . . .  y 45?
-;Harvester?
+;Harvester?  Going to be a while, I think..  maybe color sensing?
 lasx=42
 lasy=36
 solx=50
 soly=45
+misx=37
+misy=31
 
 ;Offsets used for the move function...
 ;Developed from the energy link range.
@@ -41,6 +39,9 @@ Numpad8::InstallD(centerx,centery,lasx,lasy)
 Numpad5::ClaimE(centerx,centery,movex,movey,gutter)
 Numpad2::InstallS(centerx,centery,solx,soly)
 Numpad0::Center(centerx,centery)
+NumpadDiv::InstallM(centerx,centery,misx,misy)
+NumpadMult::UpgradeC(centerx,centery,misx,misy)
+NumpadDot::UpgradeV(centerx,centery,misx,misy)
 a::Unlink()
 `::ExitApp
 
@@ -111,6 +112,120 @@ MouseClick, left, x+(1.5*lx), y-ly
 MouseClick, left, x+lx, y-(2*ly)
 MouseClick, left, x, y-(2*ly)
 MouseClick, left, x-lx, y-(2*ly)
+Center(centerx,centery)
+}
+
+InstallM(x,y,lx,ly)
+{
+Center(centerx,centery)
+Send, t
+MouseClick, left, x, y
+MouseClick, left, x-lx, y
+MouseClick, left, x-(.5*lx), y+ly
+MouseClick, left, x+(.5*lx), y+ly
+MouseClick, left, x+lx, y
+MouseClick, left, x+(.5*lx), y-ly
+MouseClick, left, x-(.5*lx), y-ly
+MouseClick, left, x-(1.5*lx), y-ly
+MouseClick, left, x-(2*lx), y
+MouseClick, left, x-(1.5*lx), y+ly
+MouseClick, left, x-lx, y+(2*ly)
+MouseClick, left, x, y+(2*ly)
+MouseClick, left, x+lx, y+(2*ly)
+MouseClick, left, x+(1.5*lx), y+ly
+MouseClick, left, x+(2*lx), y
+MouseClick, left, x+(1.5*lx), y-ly
+MouseClick, left, x+lx, y-(2*ly)
+MouseClick, left, x, y-(2*ly)
+MouseClick, left, x-lx, y-(2*ly)
+Center(centerx,centery)
+}
+
+UpgradeC(x,y,lx,ly)
+{
+Center(centerx,centery)
+MouseClick, left, x, y
+Send, c
+MouseClick, left, x-lx, y
+Send, c
+MouseClick, left, x-(.5*lx), y+ly
+Send, c
+MouseClick, left, x+(.5*lx), y+ly
+Send, c
+MouseClick, left, x+lx, y
+Send, c
+MouseClick, left, x+(.5*lx), y-ly
+Send, c
+MouseClick, left, x-(.5*lx), y-ly
+Send, c
+MouseClick, left, x-(1.5*lx), y-ly
+Send, c
+MouseClick, left, x-(2*lx), y
+Send, c
+MouseClick, left, x-(1.5*lx), y+ly
+Send, c
+MouseClick, left, x-lx, y+(2*ly)
+Send, c
+MouseClick, left, x, y+(2*ly)
+Send, c
+MouseClick, left, x+lx, y+(2*ly)
+Send, c
+MouseClick, left, x+(1.5*lx), y+ly
+Send, c
+MouseClick, left, x+(2*lx), y
+Send, c
+MouseClick, left, x+(1.5*lx), y-ly
+Send, c
+MouseClick, left, x+lx, y-(2*ly)
+Send, c
+MouseClick, left, x, y-(2*ly)
+Send, c
+MouseClick, left, x-lx, y-(2*ly)
+Send, c
+Center(centerx,centery)
+}
+
+UpgradeV(x,y,lx,ly)
+{
+Center(centerx,centery)
+MouseClick, left, x, y
+Send, v
+MouseClick, left, x-lx, y
+Send, v
+MouseClick, left, x-(.5*lx), y+ly
+Send, v
+MouseClick, left, x+(.5*lx), y+ly
+Send, v
+MouseClick, left, x+lx, y
+Send, v
+MouseClick, left, x+(.5*lx), y-ly
+Send, v
+MouseClick, left, x-(.5*lx), y-ly
+Send, v
+MouseClick, left, x-(1.5*lx), y-ly
+Send, v
+MouseClick, left, x-(2*lx), y
+Send, v
+MouseClick, left, x-(1.5*lx), y+ly
+Send, v
+MouseClick, left, x-lx, y+(2*ly)
+Send, v
+MouseClick, left, x, y+(2*ly)
+Send, v
+MouseClick, left, x+lx, y+(2*ly)
+Send, v
+MouseClick, left, x+(1.5*lx), y+ly
+Send, v
+MouseClick, left, x+(2*lx), y
+Send, v
+MouseClick, left, x+(1.5*lx), y-ly
+Send, v
+MouseClick, left, x+lx, y-(2*ly)
+Send, v
+MouseClick, left, x, y-(2*ly)
+Send, v
+MouseClick, left, x-lx, y-(2*ly)
+Send, v
 Center(centerx,centery)
 }
 
