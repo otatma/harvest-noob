@@ -1,3 +1,16 @@
+2158 6 JULY
+http://hexnet.org/post/129
+This URL is precisely what I was looking for last night.  The image
+shows a hexagon mapped to a coordinate grid.  
+
+Did some play testing.  Works great in both modes.  (I might even have to buy Harvest at this rate, heh!)  
+
+To do: 
+Recentering.
+Efficient auto-harvest placement.
+Automatic laser routing.
+Learn how memory hooks work probably.
+
 2201 5 JULY
 All that trigonometry was rubbish, I got it figured out.  Spirals are much
 stabler for construction, too.  
